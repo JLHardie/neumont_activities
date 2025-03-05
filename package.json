@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
+    "build":"npm start",
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
