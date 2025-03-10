@@ -16,7 +16,7 @@ const schema = a.schema({
       userId: a.id(),
       firstname: a.string(),
       lastname: a.string(),
-      eventfilter: a.hasOne("EventFilter", "efId"),
+      eventfilter: a.hasOne("EventFilter", "userId"),
       settings: a.hasOne("Settings", "userId"),
       isCoordinator: a.boolean(),
     }),
