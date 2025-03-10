@@ -29,14 +29,16 @@ const schema = a.schema({
     }),
   EventFilter: a
     .model({
-      efId: a.id(),
+      userId: a.string(),
       belongsTo: a.belongsTo("User","userId"),
     }),
   Settings: a
     .model({
+      userId: a.string(),
       belongsTo: a.belongsTo("User", "userId"),
     }),
   Tag: a.model({
+    eventId: a.string(),
     belongsTo: a.belongsTo("Event", "eventId"),
     tag: a.string(),
   })
