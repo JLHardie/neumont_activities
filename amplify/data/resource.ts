@@ -16,7 +16,7 @@ const schema = a.schema({
       userId: a.id(),
       firstname: a.string(),
       lastname: a.string(),
-      eventfilter: a.hasOne("EventFilter", "userId"),
+      eventfilter: a.hasOne("EventFilter", "efId"),
       settings: a.hasOne("Settings", "userId"),
       isCoordinator: a.boolean(),
     }),
@@ -29,6 +29,7 @@ const schema = a.schema({
     }),
   EventFilter: a
     .model({
+      efId: a.id(),
       belongsTo: a.belongsTo("User","userId"),
     }),
   Settings: a
