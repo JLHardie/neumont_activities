@@ -10,9 +10,40 @@ const schema = a.schema({
   Todo: a
     .model({
       content: a.string(),
-    })
-    .authorization((allow) => [allow.guest()]),
-});
+    }),
+  User: a
+    .model({
+      userId: a.id(),
+      firstname: a.string(),
+      lastname: a.string(),
+      eventfilter: a.hasOne("EventFilter", "userId"),
+      settings: a.hasOne("Settings", "userId"),
+      isCoordinator: a.boolean(),
+    }),
+  Event: a
+    .model({
+      eventId: a.id(),
+      title: a.string(),
+      description: a.string(),
+      tags: a.hasMany("Tag", "eventId"),
+    }),
+  EventFilter: a
+    .model({
+      belongsTo: a.belongsTo("User","userId"),
+    }),
+  Settings: a
+    .model({
+      belongsTo: a.belongsTo("User", "userId"),
+    }),
+  Tag: a.model({
+    belongsTo: a.belongsTo("Event", "eventId"),
+    tag: a.string(),
+  })
+})
+.authorization((allow) => [
+  allow.publicApiKey(),
+  allow.owner()
+]);
 
 export type Schema = ClientSchema<typeof schema>;
 
