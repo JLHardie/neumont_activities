@@ -10,14 +10,14 @@ import EventsScreen from './screens/EventsScreen';/*
 // import CoordinateScreen from './screens/CoordinateScreen';
 // import SettingsScreen from './screens/SettingsScreen';
 // import AdminScreen from './screens/AdminScreen'; */
-import { Authenticator, useAuthenticator } from "@aws-amplify/ui-react-native";
+//import { Authenticator, useAuthenticator } from "@aws-amplify/ui-react-native";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <Authenticator.Provider>
-      <Authenticator>
+    //<Authenticator.Provider>
+    //  <Authenticator>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Home">
             <Stack.Screen
@@ -32,7 +32,7 @@ export default function App() {
             <Stack.Screen name="Admin" component={AdminScreen} /> */}
           </Stack.Navigator>
         </NavigationContainer>
-      </Authenticator>
-    </Authenticator.Provider>
+    //  </Authenticator>
+    //</Authenticator.Provider>
   );
 }
