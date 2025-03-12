@@ -10,16 +10,54 @@ const schema = a.schema({
   Todo: a
     .model({
       content: a.string(),
-    })
-    .authorization((allow) => [allow.guest()]),
-});
+    }),
+  User: a
+    .model({
+      userId: a.id(),
+      firstname: a.string(),
+      lastname: a.string(),
+      eventfilter: a.hasOne("EventFilter", "userId"),
+      settings: a.hasOne("Settings", "userId"),
+      isCoordinator: a.boolean(),
+    }),
+  Event: a
+    .model({
+      eventId: a.id(),
+      title: a.string(),
+      description: a.string(),
+      tags: a.hasMany("Tag", "eventId"),
+    }),
+  EventFilter: a
+    .model({
+      userId: a.string(),
+      belongsTo: a.belongsTo("User","userId"),
+    }),
+  Settings: a
+    .model({
+      userId: a.string(),
+      belongsTo: a.belongsTo("User", "userId"),
+    }),
+  Tag: a.model({
+    eventId: a.string(),
+    belongsTo: a.belongsTo("Event", "eventId"),
+    tag: a.string(),
+  })
+})
+.authorization((allow) => [
+  allow.publicApiKey(),
+  allow.owner()
+]);
 
 export type Schema = ClientSchema<typeof schema>;
 
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: 'iam',
+    defaultAuthorizationMode: "apiKey",
+    // API Key is used for a.allow.public() rules
+    apiKeyAuthorizationMode: {
+      expiresInDays: 30,
+    },
   },
 });
 
