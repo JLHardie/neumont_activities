@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "neumont_activities",
-    "slug": "neumont_activities",
+    "name": "neumont_active",
+    "slug": "neumont_active",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,8 +19,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.anonymous.neumont_activities"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
