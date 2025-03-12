@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 // Import your screens
 import HomeScreen from './screens/HomeScreen';
+import CoordinateScreen from './screens/CoordinateScreen';
 import EventsScreen from './screens/EventsScreen';/* 
 // import CalendarScreen from './screens/CalendarScreen';
 // import CoordinateScreen from './screens/CoordinateScreen';
@@ -25,8 +26,8 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen name="Events" component={EventsScreen} />
-            {/* <Stack.Screen name="Calendar" component={CalendarScreen} />
             <Stack.Screen name="Coordinate" component={CoordinateScreen} />
+            {/* <Stack.Screen name="Calendar" component={CalendarScreen} />
             <Stack.Screen name="Settings" component={SettingsScreen} />
             <Stack.Screen name="Admin" component={AdminScreen} /> */}
           </Stack.Navigator>
